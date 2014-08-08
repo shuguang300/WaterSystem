@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">污水厂管理系统</string>
+    <string name="hello_world">Hello world!</string>
+	<string name="btn_device">设备管理</string>
+	<string name="btn_patrol">生产巡检</string>
+</resources>

@@ -1,0 +1,665 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.env.watersystem"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="15"
+        android:targetSdkVersion="20" />
+    
+     <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+        <uses-permission android:name="android.permission.VIBRATE" />
+        <uses-permission android:name="android.permission.CAMERA" />
+        <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+        <uses-permission android:name="android.permission.INTERNET" />
+        <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+        <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+        <uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION" />
+        <uses-permission android:name="android.permission.FLASHLIGHT" />
+        <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+        <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+        <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+        <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+        <uses-permission android:name="android.permission.NFC" />
+        <uses-permission android:name="android.permission.RECORD_AUDIO" />
+        <uses-permission android:name="android.permission.WAKE_LOCK" />
+        <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+        <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES" />
+        <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT" />
+        <uses-permission android:name="com.android.launcher.permission.UNINSTALL_SHORTCUT" />
+        <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS" />
+        <uses-permission android:name="com.android.launcher.permission.WRITE_SETTINGS" />
+        <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
+    
+
+    <supports-screens
+        android:anyDensity="true"
+        android:largeScreens="true"
+        android:normalScreens="true"
+        android:resizeable="true"
+        android:smallScreens="true"
+        android:xlargeScreens="true" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="com.env.watersystem.activity.SystemMainActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+       
+        <!--
+             <application
+            android:name="com.env.dcwater.component.DCWaterApp"
+            android:allowBackup="true"
+            android:icon="@drawable/ic_pic_logo"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Light.NoTitleBar" >
+        -->
+
+
+        <!-- 启动界面 -->
+        <activity
+            android:name="com.env.dcwater.activity.StartupActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
+            android:windowSoftInputMode="stateAlwaysHidden" >
+          <!--   <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter> -->
+            <intent-filter>
+                <action android:name="com.env.dcwater.activity.StartupActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <!--
+            <intent-filter>
+                <action android:name="android.intent.action.CREATE_SHORTCUT" />
+            </intent-filter>
+            -->
+            <!--
+      该代码添加 nfc卡片的调度系统
+        	<intent-filter>
+                <action android:name="android.nfc.action.NDEF_DISCOVERED" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <intent-filter>  
+                <action android:name="android.nfc.action.TECH_DISCOVERED" /> 
+            </intent-filter>  
+            <meta-data  
+                android:name="android.nfc.action.TECH_DISCOVERED"  
+                android:resource="@xml/nfc_tech_filter" />
+            <intent-filter>
+    			<action android:name="android.nfc.action.TAG_DISCOVERED"/>
+			</intent-filter>
+            -->
+        </activity>
+
+        <!-- 在系统中的launcher添加快捷方式 -->
+        <!--
+        <activity android:name="com.env.dcwater.component.InstallShortCut">
+            <intent-filter>
+                <action android:name="android.intent.action.CREATE_SHORTCUT" />
+            </intent-filter>
+        </activity>
+        -->
+                <activity
+            android:name="com.env.dcwater.activity.LoginActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustResize" >
+            <intent-filter>
+                <action android:name="com.env.dcwater.activity.LoginActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="com.env.dcwater.activity.WaterMainActivity"
+            android:configChanges="orientation|screenSize"
+            android:icon="@drawable/ic_act_main"
+            android:screenOrientation="unspecified"
+            android:theme="@style/CustomActionBarTheme"
+            android:windowSoftInputMode="stateAlwaysHidden" >
+            <intent-filter>
+                <action android:name="com.env.dcwater.activity.MainActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <!-- 设备信息列表查看界面 -->
+        <activity
+            android:name="com.env.dcwater.activity.DeviceInfoListActivity"
+            android:configChanges="orientation"
+            android:icon="@drawable/ic_act_devicelist"
+            android:screenOrientation="portrait"
+            android:theme="@style/CustomActionBarTheme"
+            android:windowSoftInputMode="stateAlwaysHidden" >
+            <intent-filter>
+                <action android:name="com.env.dcwater.activity.DeviceInfoListActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <!-- 设备信息查看界面 -->
+        <activity
+            android:name="com.env.dcwater.activity.DeviceInfoItemActivity"
+            android:configChanges="orientation|screenSize"
+            android:icon="@drawable/ic_act_devicelist"
+            android:screenOrientation="unspecified"
+            android:theme="@style/CustomActionBarTheme"
+            android:windowSoftInputMode="stateAlwaysHidden" >
+            <intent-filter>
+                <action android:name="com.env.dcwater.activity.DeviceInfoItemActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <!-- 报修管理界面 -->
+        <activity
+            android:name="com.env.dcwater.activity.RepairManageActivity"
+            android:configChanges="orientation"
+            android:icon="@drawable/ic_act_repair"
+            android:label="@string/activity_userright_item_repairmanage"
+            android:screenOrientation="portrait"
+            android:theme="@style/CustomActionBarTheme"
+            android:windowSoftInputMode="stateAlwaysHidden" >
+            <intent-filter>
+                <action android:name="com.env.dcwater.activity.RepairManageActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <!-- 报修管理查看详细界面 -->
+        <activity
+            android:name="com.env.dcwater.activity.RepairManageItemActivity"
+            android:configChanges="orientation"
+            android:icon="@drawable/ic_act_repair"
+            android:screenOrientation="portrait"
+            android:theme="@style/CustomActionBarTheme"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustResize" >
+            <intent-filter>
+                <action android:name="com.env.dcwater.activity.RepairManageItemActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <!-- 设备选择界面 -->
+        <activity
+            android:name="com.env.dcwater.activity.DeviceSelectActivity"
+            android:configChanges="orientation"
+            android:icon="@drawable/ic_act_devicelist"
+            android:screenOrientation="portrait"
+            android:theme="@style/CustomActionBarTheme"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustResize" >
+            <intent-filter>
+                <action android:name="com.env.dcwater.activity.DeviceSelectActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <!-- 数据填报界面 -->
+        <activity
+            android:name="com.env.dcwater.activity.DataInputActivity"
+            android:configChanges="orientation"
+            android:icon="@drawable/ic_act_datainput"
+            android:screenOrientation="portrait"
+            android:theme="@style/CustomActionBarTheme"
+            android:windowSoftInputMode="stateVisible|adjustResize" >
+            <intent-filter>
+                <action android:name="com.env.dcwater.activity.DataInputActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <!-- 维修历史记录界面 -->
+        <activity
+            android:name="com.env.dcwater.activity.MaintainHistoryActivity"
+            android:configChanges="orientation"
+            android:icon="@drawable/ic_act_repairhistory"
+            android:screenOrientation="portrait"
+            android:theme="@style/CustomActionBarTheme"
+            android:windowSoftInputMode="stateAlwaysHidden" >
+            <intent-filter>
+                <action android:name="com.env.dcwater.activity.MaintainHistoryActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <!-- 派发保养工单 -->
+        <activity
+            android:name="com.env.dcwater.activity.UpkeepSendActivity"
+            android:configChanges="orientation"
+            android:icon="@drawable/ic_act_upkeepsend"
+            android:screenOrientation="portrait"
+            android:theme="@style/CustomActionBarTheme"
+            android:windowSoftInputMode="stateAlwaysHidden" >
+            <intent-filter>
+                <action android:name="com.env.dcwater.activity.UpkeepSendActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <!-- 派发保养工单详情 -->
+        <activity
+            android:name="com.env.dcwater.activity.UpkeepSendItemActivity"
+            android:configChanges="orientation"
+            android:icon="@drawable/ic_act_upkeepsend"
+            android:screenOrientation="portrait"
+            android:theme="@style/CustomActionBarTheme"
+            android:windowSoftInputMode="stateAlwaysHidden" >
+            <intent-filter>
+                <action android:name="com.env.dcwater.activity.UpkeepSendItemActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <!-- 保养工单填写 -->
+        <activity
+            android:name="com.env.dcwater.activity.UpkeepReportActivity"
+            android:configChanges="orientation"
+            android:icon="@drawable/ic_act_upkeepreport"
+            android:screenOrientation="portrait"
+            android:theme="@style/CustomActionBarTheme"
+            android:windowSoftInputMode="stateAlwaysHidden" >
+            <intent-filter>
+                <action android:name="com.env.dcwater.activity.UpkeepReportActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <!-- 保养工单填写详细 -->
+        <activity
+            android:name="com.env.dcwater.activity.UpkeepReportItemActivity"
+            android:configChanges="orientation"
+            android:icon="@drawable/ic_act_upkeepreport"
+            android:screenOrientation="portrait"
+            android:theme="@style/CustomActionBarTheme"
+            android:windowSoftInputMode="stateAlwaysHidden" >
+            <intent-filter>
+                <action android:name="com.env.dcwater.activity.UpkeepReportItemActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <!-- 保养工单审核 详情 -->
+        <activity
+            android:name="com.env.dcwater.activity.UpkeepApproveItemActivity"
+            android:configChanges="orientation"
+            android:icon="@drawable/ic_act_upkeepapprove"
+            android:screenOrientation="portrait"
+            android:theme="@style/CustomActionBarTheme"
+            android:windowSoftInputMode="stateAlwaysHidden" >
+            <intent-filter>
+                <action android:name="com.env.dcwater.activity.UpkeepApproveItemActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <!-- 保养工单审核 -->
+        <activity
+            android:name="com.env.dcwater.activity.UpkeepApproveActivity"
+            android:configChanges="orientation"
+            android:icon="@drawable/ic_act_upkeepapprove"
+            android:screenOrientation="portrait"
+            android:theme="@style/CustomActionBarTheme"
+            android:windowSoftInputMode="stateAlwaysHidden" >
+            <intent-filter>
+                <action android:name="com.env.dcwater.activity.UpkeepApproveActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <!-- 保养历史记录 -->
+        <activity
+            android:name="com.env.dcwater.activity.UpkeepHistoryActivity"
+            android:configChanges="orientation"
+            android:icon="@drawable/ic_act_upkeephistory"
+            android:screenOrientation="portrait"
+            android:theme="@style/CustomActionBarTheme"
+            android:windowSoftInputMode="stateAlwaysHidden" >
+            <intent-filter>
+                <action android:name="com.env.dcwater.activity.UpkeepHistoryActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <!-- 保养历史记录 详细信息 -->
+        <activity
+            android:name="com.env.dcwater.activity.UpkeepHistoryItemActivity"
+            android:configChanges="orientation"
+            android:icon="@drawable/ic_act_upkeephistory"
+            android:screenOrientation="portrait"
+            android:theme="@style/CustomActionBarTheme"
+            android:windowSoftInputMode="stateAlwaysHidden" >
+            <intent-filter>
+                <action android:name="com.env.dcwater.activity.UpkeepHistoryItemActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <!-- 用户设置界面 -->
+        <activity
+            android:name="com.env.dcwater.activity.UserConfigActivity"
+            android:configChanges="orientation"
+            android:icon="@drawable/ic_act_userconfig"
+            android:screenOrientation="portrait"
+            android:theme="@style/CustomActionBarTheme"
+            android:windowSoftInputMode="stateAlwaysHidden" >
+            <intent-filter>
+                <action android:name="com.env.dcwater.activity.UserConfigActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <!-- 用户个人信息界面 -->
+        <activity
+            android:name="com.env.dcwater.activity.UserInformationAcivity"
+            android:configChanges="orientation"
+            android:icon="@drawable/ic_act_userinformation"
+            android:screenOrientation="portrait"
+            android:theme="@style/CustomActionBarTheme"
+            android:windowSoftInputMode="stateAlwaysHidden" >
+            <intent-filter>
+                <action android:name="com.env.dcwater.activity.UserInformationAcivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <!-- 显示大图 -->
+        <activity
+            android:name="com.env.dcwater.activity.ShowBigImageActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen"
+            android:windowSoftInputMode="stateAlwaysHidden" >
+            <intent-filter>
+                <action android:name="com.env.dcwater.activity.ShowBigImageActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <!-- 显示维修任务进度 -->
+        <activity
+            android:name="com.env.dcwater.activity.RepairTaskStateFlowActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:theme="@style/CustomActionBarTheme"
+            android:windowSoftInputMode="stateAlwaysHidden" >
+            <intent-filter>
+                <action android:name="com.env.dcwater.activity.RepairTaskStateFlowActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <!-- 显示保养任务进度 -->
+        <activity
+            android:name="com.env.dcwater.activity.MaintainTaskStateFlowAcivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:theme="@style/CustomActionBarTheme"
+            android:windowSoftInputMode="stateAlwaysHidden" >
+            <intent-filter>
+                <action android:name="com.env.dcwater.activity.MaintainTaskStateFlowAcivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <!-- 显示维修任务流程 -->
+        <activity
+            android:name="com.env.dcwater.activity.TaskStateWorkFlowActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:theme="@style/CustomActionBarTheme"
+            android:windowSoftInputMode="stateAlwaysHidden" >
+            <intent-filter>
+                <action android:name="com.env.dcwater.activity.TaskStateWorkFlowActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        
+        
+        
+        
+        
+        <activity
+            android:name="com.env.activity.ActivitySplash"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen"
+            android:windowSoftInputMode="stateAlwaysHidden" >
+           <!--  <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter> -->
+            <intent-filter>
+                <action android:name="com.env.easypatrol.SplashActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            
+            <intent-filter>
+                <action android:name="android.intent.action.CREATE_SHORTCUT"/> 
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.nfc.action.NDEF_DISCOVERED" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            
+            <intent-filter>
+                <action android:name="android.nfc.action.TECH_DISCOVERED" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <meta-data
+                android:name="android.nfc.action.TECH_DISCOVERED"
+                android:resource="@xml/nfc_tech_filter" />
+            
+            <intent-filter>
+    			<action android:name="android.nfc.action.TAG_DISCOVERED"/>
+    			<category android:name="android.intent.category.DEFAULT" />
+			</intent-filter>
+			
+        </activity>
+
+        <!-- 添加桌面快捷方式 -->
+        <activity
+            android:name="com.env.activity.ActivityShortCut"
+            android:label="@string/system_appname" >
+            <intent-filter>
+                <action android:name="android.intent.action.CREATE_SHORTCUT" />
+            </intent-filter>
+        </activity>
+
+        <!-- 提示更新界面 -->
+        <activity
+            android:name="com.env.activity.UpdateSystem"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:theme="@style/DialogActivity" >
+        </activity>
+
+        <!-- 登陆界面 -->
+        <activity
+            android:name="com.env.activity.ActivityLogin"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustResize" >
+        </activity>
+
+        <!-- tabhost界面，已弃用 -->
+        <activity
+            android:name="com.env.activity.PatrolActivityMain"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" >
+        </activity>
+
+        <!-- 设置界面 -->
+        <activity
+            android:name="com.env.activity.ActivityConfig"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" >
+        </activity>
+
+        <!-- 数据管理界面 -->
+        <activity
+            android:name="com.env.activity.ActivityAdminData"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" >
+        </activity>
+
+        <!-- 配置项管理界面 -->
+        <activity
+            android:name="com.env.activity.ActivityAdminConfig"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" >
+        </activity>
+
+        <!-- 注册卡片界面，已弃用 -->
+        <activity
+            android:name="com.env.activity.ActivityRegisterCard"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustResize" >
+        </activity>
+
+        <!-- 验证页面 -->
+        <activity
+            android:name="com.env.activity.ActivityApplication"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustResize" >
+        </activity>
+
+        <!-- 首次登陆欢迎界面界面 -->
+        <activity
+            android:name="com.env.activity.ActivityWelcome"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" >
+        </activity>
+
+        <!-- 文本数字，多媒体任务填写界面 -->
+        <activity
+            android:name="com.env.activity.ActivityTaskAction"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" >
+        </activity>
+
+        <!-- 任务界面 -->
+        <activity
+            android:name="com.env.activity.ActivityTaskNFCCard"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden" >
+        </activity>
+
+        <!-- 查看单个巡检项界面 -->
+        <activity
+            android:name="com.env.activity.ActivityTaskEachTag"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden" >
+        </activity>
+
+        <!-- 查看单个巡检项历史数据的 webview -->
+        <activity
+            android:name="com.env.activity.ActivityEachTagWebView"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden" >
+        </activity>
+
+        <!-- 查看单个巡检卡界面 -->
+        <activity
+            android:name="com.env.activity.ActivityTaskEachCard"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden" >
+        </activity>
+
+        <!-- 任务列表界面 -->
+        <activity
+            android:name="com.env.activity.ActivityTaskConstruction"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden" >
+        </activity>
+
+        <!-- 开机启动，系统更新的receiver -->
+        <receiver android:name="com.env.component.StartUpBroadCast" >
+            <intent-filter android:priority="2147483647" >
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <intent-filter android:priority="2147483647" >
+                <action android:name="com.env.component.CustomBroadCast" />
+            </intent-filter>
+        </receiver>
+
+        <!-- 桌面控件receiver -->
+        <receiver android:name="com.env.component.AppWidget" >
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="com.env.component.AppWidget" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/appwidget" />
+        </receiver>
+
+        <!-- 主要的service -->
+        <service
+            android:name="com.env.component.DataService"
+            android:exported="false" >
+            <intent-filter android:priority="2147483647" >
+                <action android:name="com.env.component.DataService" />
+            </intent-filter>
+        </service>
+
+        <!-- 次要的service -->
+        <service
+            android:name="com.env.component.TaskService"
+            android:exported="false" >
+            <intent-filter android:priority="2147483647" >
+                <action android:name="com.env.component.TaskService" />
+            </intent-filter>
+        </service>
+
+
+
+    </application>
+
+</manifest>
