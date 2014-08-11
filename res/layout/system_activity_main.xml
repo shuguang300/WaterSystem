@@ -1,17 +1,30 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="horizontal"
+    android:background="@color/gray" >
 
-    <Button
-        android:id="@+id/button1"
+    <GridLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/btn_device" />
+        android:columnCount="4"
+    	android:rowCount="4" > 
 
-    <Button 
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/btn_patrol"/>
+        <Button
+            android:id="@+id/system_activity_main_btn_device"
+            android:layout_width="128dp"
+            android:layout_height="128dp"
+            android:gravity="center"
+            android:background="@drawable/ic_pic_logo" />
+
+        <Button
+            android:id="@+id/system_activity_main_btn_patrol"
+            android:layout_width="128dp"
+            android:layout_height="128dp"
+            android:gravity="center"
+            android:background="@drawable/logo" /> 
+    </GridLayout>
+
 </LinearLayout>

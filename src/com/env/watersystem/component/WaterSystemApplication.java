@@ -18,6 +18,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Environment;
+import android.util.Log;
 
 
 public class WaterSystemApplication extends Application{
@@ -74,12 +75,10 @@ public class WaterSystemApplication extends Application{
 		SharedPreferences sp = getSharedPreferences(PatrolApplication.PREFS_NAME, MODE_PRIVATE);
 		HttpUtil.getInstance(context).setIPAddr(sp.getString(PatrolApplication.IP_Addr,PatrolApplication.IP));
 		
-		
 		String path = DataBaseUtil.getPath()+File.separator+DataBaseUtil.DATABASE_NAME;
 		SystemMethodUtil.copyDB(context,path);
 		
 		try {
-			Thread.sleep(1000);
 			Intent startService = new Intent();
 			startService.setAction("com.env.component.DataService");
 			context.startService(startService);
@@ -91,7 +90,7 @@ public class WaterSystemApplication extends Application{
 			PendingIntent pendingIntent = PendingIntent.getService(context, 0, keepDataService, 0);
 			alarmManager.setRepeating(AlarmManager.ELAPSED_REALTIME, 0, 5*60*1000, pendingIntent);
 		} catch (Exception e) {
-			
+			Log.v("WaterSystemApplication", e.getMessage());
 		}
 	}
 	

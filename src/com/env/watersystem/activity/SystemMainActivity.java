@@ -16,8 +16,8 @@ public class SystemMainActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.system_activity_main);
-		btn_Device = (Button)findViewById(R.id.button1);
-		btn_Patrol = (Button)findViewById(R.id.button2);
+		btn_Device = (Button)findViewById(R.id.system_activity_main_btn_device);
+		btn_Patrol = (Button)findViewById(R.id.system_activity_main_btn_patrol);
 		btn_Device.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
